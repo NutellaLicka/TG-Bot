@@ -1,0 +1,12 @@
+#!/bin/bash
+cd "${BASH_SOURCE%/*}" || exit
+
+#set this up as a crontab at whatever interval you want to check all of these things
+
+node="[SH] Alert -"
+
+./check_iguana.sh
+sleep 10
+./check_KMD.sh
+sleep 10
+./check_utxos.sh
