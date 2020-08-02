@@ -1,4 +1,7 @@
 #!/bin/bash
+SHELL=/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+
 cd "${BASH_SOURCE%/*}" || exit
 
 node="[SH MAIN] Alert -"
@@ -6,9 +9,9 @@ node="[SH MAIN] Alert -"
 #lets check your utxo balances
 #update minUtxos to the minimum you want before it send you a message
 #maxminingutxos will send a message once you hit this many mining utxos
-minKMDUtxos=10
+minKMDUtxos=5
 minBTCUtxos=10
-maxminingUtxos=25
+maxminingUtxos=50
 #####################################
 
 totalUtxos=$(komodo-cli listunspent | jq -r '.[].amount' | wc -l)
@@ -30,4 +33,3 @@ btcUtxos=$(bitcoin-cli listunspent | jq --arg amt 0.0001 '[.[] | select(.amount=
 
     if [[ "btcUtxos" -le "minBTCUtxos" ]]; then
         ./telegram_send.sh "${node} Your node has ${btcUtxos} BTC UTXOS left. Please check your server and split more."
-    fi
