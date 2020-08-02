@@ -1,4 +1,6 @@
 #!/bin/bash
+SHELL=/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 cd "${BASH_SOURCE%/*}" || exit
 
 #set this up as a crontab at whatever interval you want to check all of these things
