@@ -1,4 +1,7 @@
 #!/bin/bash
+SHELL=/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+
 cd "${BASH_SOURCE%/*}" || exit
 
 node="[SH MAIN] Alert -"
@@ -21,7 +24,7 @@ if [[ "$getinfo" != "null" ]]; then
     fi
 
 #check to see the block difference of your current block and the komodo notarised block
-    if [[ "notaDifference" > 10 ]]; then
+    if [[ "notaDifference" -gt 20 ]]; then
         ./telegram_send.sh "${node} The last Komodo notarisation was ${notaDifference} blocks ago. KMD Block HT: ${blocks}. Notarised HT: ${notarized}."
     fi
 
