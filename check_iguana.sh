@@ -1,4 +1,7 @@
 #!/bin/bash
+SHELL=/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+
 cd "${BASH_SOURCE%/*}" || exit
 
 node="[SH MAIN] Alert -"
